@@ -241,5 +241,3 @@ For questions or support, reach out to:
 ---
 
 **Designed and Developed by Tanmay Jadhav** ❤️
-
-**Built with ❤️ to help learners discover amazing courses**
