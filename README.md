@@ -2,7 +2,7 @@
 
 A beautiful, responsive course discovery and filtering platform built with **React 19**, **Vite 7**, and modern web technologies. Designed to impress recruiters with smooth animations, professional UI, and excellent user experience.
 
-🌐 **Live Demo**: https://course-finder-1w2xtchfh-tanmay-jadhavs-projects.vercel.app
+🌐 **Live Demo**: https://course-finder-1z5aor6ep-tanmay-jadhavs-projects.vercel.app
 
 📦 **GitHub Repository**: https://github.com/Tanmayjadhav2305/course-finder
 
@@ -30,6 +30,7 @@ A beautiful, responsive course discovery and filtering platform built with **Rea
 - **Filter Sidebar**: Collapsible filters with smooth open/close animations
 - **Course Grid**: Auto-responsive layout (5 columns desktop, 2 tablet, 1 mobile) with hover zoom effects
 - **Hero Section**: Eye-catching landing section with animated statistics
+- **Motivational Quotes**: Auto-refreshing inspirational quotes from public API, updates every 10 seconds with manual refresh button
 - **Testimonials**: Student reviews with 5-star ratings and smooth stagger animations
 - **Professional Footer**: Links, social profiles, and developer credit with gradient styling
 
@@ -149,7 +150,25 @@ const filteredCourses = courses.filter(course =>
 );
 ```
 
-### 2. Responsive Grid Layout
+### 2. Motivational Quotes from Public API
+```javascript
+// Fetches random inspirational quotes every 10 seconds
+const fetchQuote = async () => {
+  const response = await fetch('https://api.api-ninjas.com/v1/quotes?category=inspirational');
+  const data = await response.json();
+  setQuote(data[0].quote);
+  setAuthor(data[0].author);
+};
+
+// Auto-refresh interval
+useEffect(() => {
+  const interval = setInterval(() => fetchQuote(), 10000);
+  return () => clearInterval(interval);
+}, []);
+```
+Features fallback to ZenQuotes API and local quote pool for reliability.
+
+### 3. Responsive Grid Layout
 ```css
 .courses-grid {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -157,13 +176,14 @@ const filteredCourses = courses.filter(course =>
 }
 ```
 
-### 3. Smooth Animations
+### 4. Smooth Animations
 - Page load animations with Framer Motion
 - Hover effects on cards and buttons
 - Filter expansion/collapse animations
 - Scroll indicators
+- Auto-refreshing quote animations
 
-### 4. Professional Styling
+### 5. Professional Styling
 - Gradient backgrounds and text
 - Glassmorphism effects with backdrop-filter
 - Custom scrollbars
