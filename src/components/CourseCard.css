@@ -336,4 +336,27 @@
   .meta-item {
     font-size: 0.75rem;
   }
+
+  /* Disable animations on mobile */
+  .course-card:hover {
+    transform: none;
+  }
+
+  .card-image {
+    transition: none;
+  }
+
+  .course-card:hover .card-image {
+    transform: none;
+  }
+
+  .card-overlay {
+    opacity: 1 !important;
+    transition: none;
+  }
+
+  /* Reduce blur on mobile */
+  .course-card {
+    backdrop-filter: blur(5px);
+  }
 }

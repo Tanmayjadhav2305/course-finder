@@ -4,6 +4,7 @@ import Header from './components/Header';
 import FilterSidebar from './components/FilterSidebar';
 import CourseCard from './components/CourseCard';
 import HeroSection from './components/HeroSection';
+import MotivationalQuote from './components/MotivationalQuote';
 import TestimonialSection from './components/TestimonialSection';
 import Footer from './components/Footer';
 import coursesData from './data/courses.json';
@@ -96,6 +97,7 @@ function App() {
         </div>
       </main>
 
+      <MotivationalQuote />
       <TestimonialSection />
       <Footer />
     </div>

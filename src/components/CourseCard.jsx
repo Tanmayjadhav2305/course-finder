@@ -1,5 +1,6 @@
 import { Star, Users, Clock, BarChart3, ShoppingCart } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import './CourseCard.css';
 
 function CourseCard({
@@ -15,14 +16,22 @@ function CourseCard({
   duration,
   level,
 }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <motion.div
       className="course-card"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -5 }}
+      transition={{ duration: isMobile ? 0.3 : 0.5 }}
+      whileHover={isMobile ? {} : { y: -5 }}
     >
       {/* Image Container */}
       <div className="card-image-container">
@@ -30,7 +39,7 @@ function CourseCard({
         <div className="card-overlay">
           <motion.button
             className="btn-primary btn-card"
-            whileHover={{ scale: 1.05 }}
+            whileHover={isMobile ? {} : { scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             <ShoppingCart size={18} />

@@ -305,3 +305,27 @@
     font-size: 1.5rem;
   }
 }
+
+/* Mobile Performance - Disable animations */
+@media (max-width: 768px) {
+  .logo-icon {
+    animation: none;
+  }
+
+  .header {
+    transition: none;
+    backdrop-filter: blur(5px);
+  }
+
+  .search-bar {
+    transition: none;
+  }
+
+  .nav-links a::after {
+    transition: none;
+  }
+
+  .mobile-menu-btn {
+    transition: none;
+  }
+}

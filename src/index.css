@@ -218,3 +218,82 @@ input[type="checkbox"] {
     font-size: 1.25rem;
   }
 }
+
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.3s !important;
+  }
+
+  /* Disable animations for reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* GPU acceleration for transforms */
+  div {
+    transform: translateZ(0);
+    will-change: auto;
+  }
+
+  /* Optimize images */
+  img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Reduce blur effects on mobile */
+  [class*="blur"],
+  [class*="glass"],
+  [class*="backdrop"] {
+    backdrop-filter: blur(5px) !important;
+  }
+
+  /* Smooth scrolling with GPU acceleration */
+  body {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optimize animations for mobile */
+  @media (max-width: 480px) {
+    * {
+      animation-duration: 0.2s !important;
+      animation-delay: 0 !important;
+    }
+  }
+}
+
+/* Optimize for very small phones */
+@media (max-width: 480px) {
+  @keyframes fadeIn {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-5px);
+    }
+  }
+
+  /* Disable heavy animations */
+  [class*="hero"],
+  [class*="gradient"],
+  [class*="glow"] {
+    animation: none !important;
+  }
+}
